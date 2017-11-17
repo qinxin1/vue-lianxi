@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+		    <img src="./assets/logo.png">
+		    <div class="soubox">
+		      <button class="showsearch" @click="showsou">搜索</button>
+		      <div class="sou" v-show="showit">
+		        <input type="text" name="" id="keywords">
+		        <div class="closesou" @click="hidesou">X</div>
+		      </div>
+		    </div>
+		</div>
+	</body>
+	<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	new Vue({
+		  el: '#app',
+		  data () {
+		    return {
+		      showit: false
+		    }
+		  },
+		  methods:{
+		    showsou(){
+		      this.showit = true
+		      this.$nextTick(function () {
+		        // DOM 更新了
+		        document.getElementById("keywords").focus()
+		        alert('DOM发生了改变')
+		      })
+		    },
+		    hidesou(){
+		      this.showit = false
+		    }
+		  }
+	})
+	</script>
+</html>
